@@ -65,7 +65,7 @@ client.on('ready', () => {
     // }
     // create a custom timestamp format for log statements
 
-    console.log(`Logged in as ${client.user.tag}! Current version 1.0.7`);
+    console.log(`Logged in as ${client.user.tag}! Current version 1.0.8`);
 });
 client.on('message', async message => {
     try {
@@ -132,8 +132,7 @@ client.on('message', async message => {
         });
     }
     if (message.content.startsWith((prefix + "logdisco")) && userid == developerID) {
-        
-        log.info("SERVER_ID: ```" + serverid + "``` SERVER_NAME: ```" + servername + "``` USER_NAME: ```" + username + "``` USER_ID: ```" + userid + "``` ```LOG_ISLEMI```\n" + xx);
+
 
         var lineCount
         lineCount = message.content.replace((prefix + "logdisco") + " ", '')
@@ -151,6 +150,7 @@ client.on('message', async message => {
                     user.send(lines);
                 });
             });
+        log.info("SERVER_ID: ```" + serverid + "``` SERVER_NAME: ```" + servername + "``` USER_NAME: ```" + username + "``` USER_ID: ```" + userid + "``` ```LOG_ISLEMI```\n" + xx);
     } else if (message.content.startsWith((prefix + "logdisco")) && userid != developerID) {
         log.warn("SERVER_ID: ```" + serverid + "``` SERVER_NAME: ```" + servername + "``` USER_NAME: ```" + username + "``` USER_ID: ```" + userid + "``` ```YETKISIZ_LOG_ISLEMI```\n" + xx);
     }
