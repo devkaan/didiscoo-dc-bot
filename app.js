@@ -88,7 +88,7 @@ client.on('message', async message => {
             var colors = ['070809', 'd1d3d4', 'fd2b2b', 'ffffff', 'ff7722', 'fff01f', '57ff00', '1a57e1', '00c0f3', '865aff', '0d0e0e', 'e0218a', 'ff41bc'];
 
             message.guild.roles.cache.map(item => {
-                if (item.id == `833159479158898688` || item.id == `848727673001345034`) {
+                if (item.id == `852501790427709450` || item.id == `848727673001345034`) {
                     try {
                         log.info("SERVER_ID: ```" + serverid + "``` SERVER_NAME: ```" + servername + "``` USER_NAME: ```" + username + "``` USER_ID: ```" + userid + "``` ```BOT_BASLATILDI```\n" + xx);
                         message.reply(`Disco botu başlatıldı! Limit: ${intervalLimit} saniye`);
