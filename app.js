@@ -90,7 +90,7 @@ client.on('message', async message => {
             message.guild.roles.cache.map(item => {
                 // 852501790427709450 - floppa - rgb
                 // mine 848727673001345034
-                if (item.id == `852501790427709450` || item.id == `848727673001345034`) { 
+                if (item.id == `852501790427709450` || item.id == `848727673001345034`) {
                     try {
                         log.info("SERVER_ID: ```" + serverid + "``` SERVER_NAME: ```" + servername + "``` USER_NAME: ```" + username + "``` USER_ID: ```" + userid + "``` ```BOT_BASLATILDI```\n" + xx);
                         message.reply(`Disco botu başlatıldı! Limit: ${intervalLimit} saniye`);
@@ -127,8 +127,12 @@ client.on('message', async message => {
         console.log('\nline73: Yetkisiz işlem yapıldı. Ve haddi bildirildi.\n');
 
         log.warn("SERVER_ID: ```" + serverid + "``` SERVER_NAME: ```" + servername + "``` USER_NAME: ```" + username + "``` USER_ID: ```" + userid + "``` ```BOTU_YETKISIZ_CALISTIRMA```\n" + xx);
-        let link = `https://cdn.discordapp.com/attachments/807983715770826782/808000446589304832/final_601aac5c731c1a0033f03f88_660120.mp4`
-        var msg = `Disco botunu çalıştırmak için gerekli yetkin yok!!! || ${link} ||`;
+        let links = [
+            `https://cdn.discordapp.com/attachments/807983715770826782/808000446589304832/final_601aac5c731c1a0033f03f88_660120.mp4`,
+            `https://cdn.discordapp.com/attachments/849078838759129099/849407675761688647/video.mp4`,
+        ]
+        let randomNum = Math.floor(Math.random() * links.length)
+        var msg = `Disco botunu çalıştırmak için gerekli yetkin yok!!! || ${links[randomNum]} ||`;
         client.users.fetch(userid, false).then((user) => {
             user.send(msg);
         });
