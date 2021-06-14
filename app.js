@@ -37,7 +37,7 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
 
-const intervalLimit = 20;
+const intervalLimit = 30;
 const prefix = config.prefix;
 const startCommand = (prefix + "discoo");
 const defaultColor = "040505";
@@ -101,11 +101,8 @@ client.on('message', async message => {
                             item.edit({
                                 color: colors[random]
                             })
-                            intervalCount += 0.5;
+                            intervalCount += 0.8;
                             if (intervalCount >= intervalLimit) {
-                                item.edit({
-                                    color: defaultColor
-                                })
                                 message.reply(`Disco botu durdu. Limit: ${intervalLimit} saniye`);
                                 console.log(`\nline49: Disco botu durdu. Limit: ${intervalLimit} saniye`);
                                 clearInterval(interval)
@@ -113,7 +110,7 @@ client.on('message', async message => {
                                 intervalCount = 0
                                 isStarted = false
                             }
-                        }, 0.5 * 1000)
+                        }, 0.8 * 1000)
                     } catch (error) {
                         console.log('catched\n', error);
                     }
@@ -136,6 +133,16 @@ client.on('message', async message => {
         client.users.fetch(userid, false).then((user) => {
             user.send(msg);
         });
+    }
+    if (isStarted && userIDs.indexOf(userid) != -1 && message.content == (prefix + "stop")) {
+        clearInterval(interval)
+        intervalCount = 0;
+        isStarted = false
+        // item.edit({
+        //     color: defaultColor
+        // })
+        message.reply(`Disco botu durduruldu. Limit: ${intervalLimit} saniye`);
+        console.log(`\nline70: Disco botu ${prefix+"stop"} komutu ile durduruldu. Limit: ${intervalLimit} saniye`);
     }
     if (message.content.startsWith((prefix + "logdisco")) && userid == developerID) {
 
@@ -164,16 +171,7 @@ client.on('message', async message => {
 
     // botu durdurma komutu
 
-    // else if (isStarted && userIDs.indexOf(userid) != -1 && message.content == (prefix + "stop")) {
-    //     clearInterval(interval)
-    //     intervalCount = 0;
-    //     isStarted = false
-    //     // item.edit({
-    //     //     color: defaultColor
-    //     // })
-    //     message.reply(`Disco botu durduruldu. Limit: ${intervalLimit} saniye`);
-    //     console.log(`\nline70: Disco botu ${prefix+"stop"} komutu ile durduruldu. Limit: ${intervalLimit} saniye`);
-    // }
+    
 });
 
 client.login(process.env.BOT_TOKEN);
